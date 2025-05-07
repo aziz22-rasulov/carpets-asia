@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Carpets - Asia все для вашего удобства</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    /* Reset and base */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family:'Montserrat',sans-serif; background:#fff; color:#222; }
+    a { color:inherit; text-decoration:none; }
+    ul { list-style:none; }
+    img { max-width:100%; display:block; transition: transform 0.3s ease; }
+    .zoom img:hover { transform:scale(1.2); }
+    button { cursor:pointer; border:none; background:none; }
+
+    /* Container */
+    .container { max-width:1200px; margin:0 auto; padding:0 15px; }
+
+    /* Header */
+    header { border-bottom:1px solid #e5e5e5; position:sticky; top:0; background:#fff; z-index:1000; }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .logo { font-weight:600; font-size:24px; color:#222; letter-spacing:0.05em; user-select:none; }
+    nav ul { display:flex; gap:30px; }
+    nav ul li a { font-weight:600; font-size:14px; text-transform:uppercase; color:#222; padding:10px 0; transition:color .3s; }
+    nav ul li a:hover, nav ul li a.active { color:#d32f2f; }
+    .header-icons { display:flex; align-items:center; gap:25px; }
+    .header-icons a { color:#222; font-size:18px; }
+    .mobile-menu-btn { display:none; font-size:22px; color:#222; }
+
+    /* Hero */
+    .hero { position:relative; background:url('https://images.unsplash.com/photo-1604754742621-4604857c7a05?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; height:700px; display:flex; align-items:center; justify-content:center; color:#fff; text-align:center; }
+    .hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+    .hero-content { position:relative; z-index:1; max-width:700px; padding:0 15px; }
+    .hero-content h1 { font-size:48px; font-weight:700; margin-bottom:20px; text-transform:uppercase; letter-spacing:.1em; }
+    .hero-content p { font-size:18px; margin-bottom:40px; font-weight:500; }
+    .btn-primary { background:#d32f2f; color:#fff; font-weight:600; font-size:16px; padding:15px 40px; border-radius:30px; text-transform:uppercase; transition:background .3s; }
+    .btn-primary:hover { background:#b72828; }
+
+    /* About */
+    .about { padding:80px 0; background:#fafafa; }
+    .about-inner { display:flex; flex-wrap:wrap; gap:60px; align-items:center; }
+    .about-text { flex:1 1 400px; }
+    .about-text h2 { font-size:36px; font-weight:700; margin-bottom:20px; text-transform:uppercase; letter-spacing:.1em; }
+    .about-text p { font-size:16px; line-height:1.6; color:#555; }
+    .about-image img { border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,.1); }
+
+    /* Catalog */
+    .catalog { padding:80px 0; }
+    .catalog h2 { font-size:36px; font-weight:700; margin-bottom:50px; text-align:center; text-transform:uppercase; letter-spacing:.1em; }
+    .catalog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+    .catalog-item { text-align:center; cursor:pointer; }
+    .catalog-item h3 { margin:15px 0 0; font-size:20px; }
+
+    /* Products */
+    #products { display:none; padding:80px 0; background:#fafafa; }
+    #products h2 { font-size:32px; margin-bottom:40px; text-align:center; }
+    .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+    .product-item { border:1px solid #e5e5e5; border-radius:10px; overflow:hidden; background:#fff; }
+    .product-item:hover { box-shadow:0 8px 24px rgba(0,0,0,.12); }
+    .product-item-content { padding:20px; }
+    .product-item-content h4 { margin:0 0 10px; font-size:18px; }
+    .product-item-content p { margin:0; color:#d32f2f; font-weight:600; }
+
+    /* Advantages */
+    .advantages { padding:80px 0; background:#f5f5f5; }
+    .advantages-inner { display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; max-width:900px; margin:0 auto; }
+    .advantage-item { flex:1 1 250px; text-align:center; }
+    .advantage-item i { font-size:48px; color:#d32f2f; margin-bottom:20px; }
+    .advantage-item h3 { font-size:20px; font-weight:700; margin-bottom:10px; text-transform:uppercase; }
+    .advantage-item p { font-size:14px; color:#555; }
+
+    /* Contacts */
+    #contacts { padding:60px 0; background:#fafafa; }
+    #contacts h2 { font-size:36px; font-weight:700; margin-bottom:40px; text-align:center; }
+    #contacts p { margin-bottom:15px; font-size:16px; }
+
+    /* Footer */
+    footer { background:#222; color:#ccc; padding:40px 0; font-size:14px; }
+    .footer-container { display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; }
+    .footer-col h4 { color:#fff; margin-bottom:20px; font-weight:600; text-transform:uppercase; }
+    .footer-col ul li { margin-bottom:12px; }
+    .footer-col ul li a:hover { color:#d32f2f; }
+    .footer-bottom { text-align:center; margin-top:30px; color:#777; }
+
+    /* Modal */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.8); justify-content:center; align-items:center; }
+    .modal-content { position:relative; background:#fff; padding:20px; border-radius:10px; max-width:800px; width:90%; }
+    .modal-close { position:absolute; top:10px; right:15px; font-size:30px; color:#333; cursor:pointer; }
+    .gallery { display:flex; gap:10px; overflow-x:auto; padding-top:10px; }
+    .gallery img { width:150px; border-radius:5px; }
+
+    @media(max-width:768px){ nav ul { display:none; position:absolute; top:70px; right:0; background:#fff; flex-direction:column; width:220px; } .mobile-menu-btn{display:block;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Логотип Carpets - Asia">Carpets - Asia</a>
+      <nav aria-label="Главное меню">
+        <ul id="nav-menu">
+          <li><a href="#" class="active">Главная</a></li>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#advantages">Преимущества</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header-icons">
+        <a href="#"><i class="fas fa-search"></i></a>
+        <a href="#"><i class="fas fa-user"></i></a>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+      <button class="mobile-menu-btn" aria-controls="nav-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content container">
+      <h1>Ковры для вашего интерьера</h1>
+      <p>Широкий выбор ковров из разных материалов для создания уюта и стиля.</p>
+      <a href="#catalog" class="btn-primary">Перейти в каталог</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <h2>О компании Carpets - Asia</h2>
+        <p>Более 15 лет мы создаем уют с помощью ковров из натуральных и современных материалов.</p>
+        <p>Прямые поставки из Азии гарантируют качество, стиль и доступные цены.</p>
+      </div>
+      <div class="about-image">
+        <img src="images/onas.jpeg"/>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="catalog">
+    <div class="container">
+      <h2>Каталог ковров</h2>
+      <div class="catalog-grid">
+        <div class="catalog-item zoom" data-category="acrylic"><img src="images/wool.jpeg" alt="Акрил"/><h3>Акрил</h3></div>
+        <div class="catalog-item zoom" data-category="silk"><img src="images/silk.jpeg" alt="Шёлк"/><h3>Шёлк</h3></div>
+        <div class="catalog-item zoom" data-category="synthetic"><img src="images/synthetic.jpeg" alt="Синтетика"/><h3>Синтетика</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <h2 id="products-title"></h2>
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </section>
+
+  <section id="advantages" class="advantages">
+    <div class="container">
+      <h2>Наши преимущества</h2>
+      <div class="advantages-inner">
+        <div class="advantage-item"><i class="fas fa-leaf"></i><h3>Натуральность</h3><p>100% натуральные материалы</p></div>
+        <div class="advantage-item"><i class="fas fa-recycle"></i><h3>Экологичность</h3><p>Эко-производство</p></div>
+        <div class="advantage-item"><i class="fas fa-shield-alt"></i><h3>Гарантия</h3><p>До 5 лет на все ковры</p></div>
+        <div class="advantage-item"><i class="fas fa-plane"></i><h3>Доставка</h3><p>Международная доставка</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="container">
+      <h2>Контакты</h2>
+      <p><strong>Адрес:</strong> г.Москва, Калужское шоссе, 22-й километр, 10, район Коммунарка, Новомосковский административный округ, ФУД-СИТИ </p>
+      <p><strong>Телефон:</strong> <a href="tel:+74951234567">+7 (996) 975-43-63</a></p>
+      <p><strong>Email:</strong> <a href="mailto:info@carpets-asia.ru">info@carpets-asia.ru</a></p>
+      <p><strong>Время работы:</strong> Пн–Вс 7:00–19:00</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col"><h4>О компании</h4><ul><li><a href="#about">О нас</a></li><li><a href="#catalog">Каталог</a></li><li><a href="#advantages">Преимущества</a></li><li><a href="#contacts">Контакты</a></li></ul></div>
+      <div class="footer-col"><h4>Контакты</h4><p>г.Москва, Калужское шоссе, 22-й километр, 10, район Коммунарка, Новомосковский административный округ, ФУД-СИТИ</p><p>Телефон: <a href="tel:+74951234567">+7 (996) 975-43-63</a></p><p>Email: <a href="mailto:info@carpets-asia.ru">info@carpets-asia.ru</a></p></div>
+      <div class="footer-col"><h4>Мы в соцсетях</h4><ul style="display:flex; gap:15px;"><li><a href="#"><i class="fab fa-facebook-f"></i></a></li><li><a href="#"><i class="fab fa-instagram"></i></a></li><li><a href="#"><i class="fab fa-vk"></i></a></li><li><a href="#"><i class="fab fa-youtube"></i></a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 Carpets - Asia. Все права защищены.</div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span id="modal-close" class="modal-close">&times;</span>
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <div class="gallery" id="modal-gallery"></div>
+    </div>
+  </div>
+
+  <script>
+    const catalogItems = document.querySelectorAll('.catalog-item');
+    const productsSection = document.getElementById('products');
+    const productsTitle = document.getElementById('products-title');
+    const productGrid = document.getElementById('product-grid');
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalGallery = document.getElementById('modal-gallery');
+
+    <!-- Настройка каталога -->
+    const productsData = {
+      acrylic: [
+        { id:'w1', name:'Ковер 397 C', price:'6664 ₽ за м2', desc:'Акриловые ковры — яркие и эстетичные изделия, которые впишутся в любой помещение и стиль интерьера. Они не вызывают аллергии, подходят для детской', images:['images/acrylic/ac1.jpg','images/acrylic/ac1_2.jpg','images/acrylic/ac1_3.jpg','images/acrylic/ac1_4.jpg','images/acrylic/ac1_5.jpg'] },
+        { id:'w2', name:'Ковер B', price:'6664 ₽ за м2', desc:'Описа', images:['imgB1.jpg','imgB2.jpg'] },
+        { id:'w3', name:'Ковер B', price:'150$', desc:'Описание ковра B', images:['imgB1.jpg','imgB2.jpg'] },
+        { id:'w4', name:'Ковер B', price:'150$', desc:'Описание ковра B', images:['imgB1.jpg','imgB2.jpg'] },
+        { id:'w5', name:'Ковер B', price:'150$', desc:'Описание ковра B', images:['imgB1.jpg','imgB2.jpg'] }
+      ],
+      silk: [],
+      synthetic: []
+    };
+
+    catalogItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const cat = item.dataset.category;
+        const list = productsData[cat] || [];
+        productsTitle.textContent = item.textContent.trim();
+        productGrid.innerHTML = '';
+        list.forEach(prod => {
+          const el = document.createElement('div'); el.className='product-item zoom';
+          el.innerHTML = `<img src="${prod.images[0]}" alt="${prod.name}"/><div class="product-item-content"><h4>${prod.name}</h4><p>${prod.price}</p></div>`;
+          el.addEventListener('click',()=>showModal(prod));
+          productGrid.appendChild(el);
+        });
+        productsSection.style.display = list.length?'block':'none';
+        window.scrollTo({top:productsSection.offsetTop, behavior:'smooth'});
+      });
+    });
+
+    function showModal(prod){
+      modalTitle.textContent=prod.name;
+      modalDesc.textContent=prod.desc;
+      modalGallery.innerHTML='';
+      prod.images.forEach(src=>{const img=document.createElement('img');img.src=src;modalGallery.appendChild(img);});
+      modal.style.display='flex';
+    }
+
+    modalClose.onclick=()=>modal.style.display='none';
+    modal.onclick=e=>{if(e.target===modal)modal.style.display='none';};
+
+    document.querySelector('.mobile-menu-btn').onclick=()=>{
+      const nav=document.getElementById('nav-menu');
+      const exp=nav.classList.toggle('show');
+      document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded',exp);
+    };
+  </script>
+</body>
+</html>
